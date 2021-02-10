@@ -1,0 +1,28 @@
+//---------------------------------------------------------------------------
+
+#ifndef QuestionH
+#define QuestionH
+#include "vcl.h"
+#include "Test.h"
+class Question
+{
+	private:
+		UnicodeString question;
+		UnicodeString answers[4];
+		UnicodeString image;
+		int correct;
+		bool isAnswered;
+	public:
+    	Question();
+		void SetQuestion(UnicodeString str);
+		void SetAnswer(UnicodeString str, int i);
+		void SetImage(UnicodeString str);
+		void SetCorrect(UnicodeString str);
+        int GetCorrect();
+		void Show();
+		bool IsAnswered();
+        void SetAnswered(bool x);
+};
+
+//---------------------------------------------------------------------------
+#endif

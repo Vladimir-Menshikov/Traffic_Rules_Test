@@ -1,0 +1,54 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#include <jpeg.hpp>
+#pragma hdrstop
+#include "MainMenu.h"
+#include "Test.h"
+#include "Results.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+	list.load();
+	ImageBG->Picture->LoadFromFile("Background.jpg");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonExitClick(TObject *Sender)
+{
+	Form1->Close();
+	Form2->Close();
+	Form3->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonStartClick(TObject *Sender)
+{
+	Form1->Visible = false;
+	Form2->Visible = true;
+	Form2->ButtonNext->Enabled = true;
+	Form2->ButtonAnswer->Enabled = true;
+	Form2->ButtonBack->Visible = false;
+	Form2->Button1->Font->Size = 12;
+	Form2->Button2->Font->Size = 12;
+	Form2->Button3->Font->Size = 12;
+	Form2->Button4->Font->Size = 12;
+	Form2->Button5->Font->Size = 12;
+	Form2->Button6->Font->Size = 12;
+	Form2->Button7->Font->Size = 12;
+	Form2->Button8->Font->Size = 12;
+	Form2->Button9->Font->Size = 12;
+	Form2->Button10->Font->Size = 12;
+	listTest.clear();
+    listTest.fill(Form1->list);
+	Form2->number = 0;
+	listTest[Form2->number].Show();
+}
+//---------------------------------------------------------------------------
+
+

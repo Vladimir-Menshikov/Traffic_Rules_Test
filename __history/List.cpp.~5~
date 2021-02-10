@@ -1,0 +1,89 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+#include "List.h"
+
+List::List()
+{
+	Size = 0;
+	head = NULL;
+	tail = NULL;
+}
+List::~List()
+{
+	clear();
+}
+void List::pop()
+{
+	if (Size > 1)
+	{
+		Node *temp = head;
+		head = head->pNext;
+		delete temp;
+	}
+	else if (Size == 1)
+	{
+		Node *temp = head;
+		tail = head = head->pNext;
+		delete temp;
+	}
+	Size--;
+}
+void List::push(Question data)
+{
+	if (Size > 1)
+	{
+		Node *temp = tail;
+		tail = new Node (data, NULL, tail);
+		temp->pNext = tail;
+	}
+	else if (Size == 1)
+	{
+		tail = new Node (data, NULL, tail);
+		head->pNext = this->tail;
+	}
+	else
+	{
+		head = tail = new Node (data, head, tail);
+	}
+	Size++;
+}
+void List::clear()
+{
+	while (Size)
+	{
+		pop();
+	}
+}
+Question List::operator[](const int index)
+{
+	if (index <= Size / 2)
+	{
+		int counter = 0;
+		Node *current = this->head;
+
+		while (current != NULL)
+		{
+			if (counter == index)
+				return current->data;
+			current = current->pNext;
+			counter++;
+		}
+	}
+	else
+	{
+		int counter = Size - 1;
+		Node  *current = this->tail;
+
+		while (current != NULL)
+		{
+			if (counter == index)
+				return current->data;
+			current = current->pPrev;
+			counter--;
+		}
+	}
+}
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)

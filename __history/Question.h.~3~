@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------
+
+#ifndef QuestionH
+#define QuestionH
+#include "vcl.h"
+class Question
+{
+	private:
+		UnicodeString question;
+		UnicodeString answers[4];
+		UnicodeString image;
+		int numOfRight;
+		//int givenAnswer;
+	public:
+		void SetQuestion(UnicodeString str);
+		void SetAnswer(UnicodeString str, int i);
+		void SetImage(UnicodeString str);
+		void SetRight(UnicodeString str);
+};
+
+//---------------------------------------------------------------------------
+#endif
